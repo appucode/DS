@@ -1,5 +1,6 @@
 # Read x, y, subject data in to df #############
 x_test_df <- read.table("./UCI HAR Dataset/test/X_test.txt", header = FALSE)
+
 y_test_df <- read.table("./UCI HAR Dataset/test/y_test.txt", header = FALSE)
 subject_test_df <- read.table("./UCI HAR Dataset/test/subject_test.txt", header = FALSE)
 
@@ -46,6 +47,7 @@ names(x_df)[475:488] <- paste(names(x_df)[475:488], rep("-Y", length(names(x_df)
 names(x_df)[489:502] <- paste(names(x_df)[489:502], rep("-Z", length(names(x_df)[489:502])), sep = "")
 
 #Populating activity labels in y_df and adding Labels to y
+activity_labels_df <- read.table("./UCI HAR Dataset/activity_labels.txt", header = FALSE)
 for(i in 1:length(y_df$V1)){y_df$V1[i] <- activity_labels_df[y_df$V1[i], 2]}
 names(y_df) <- "labels"
 
